@@ -135,9 +135,9 @@ label {
 }
 
 .radio-item:hover,
-.radio-item input[type="radio"]:checked  {
+.radio-item:has(input[type="radio"]:checked) {
   border-color: #c7ea46;
-  background-color:  rgba(199, 234, 70, 0.2);
+  background-color: rgba(199, 234, 70, 0.2);
 }
 
 .radio-item input[type="radio"] {
