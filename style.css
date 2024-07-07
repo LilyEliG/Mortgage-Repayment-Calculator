@@ -63,7 +63,7 @@ label {
 
 .input-container {
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .input-container input {
@@ -72,6 +72,7 @@ label {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  height: 40px;
 }
 
 .input-container .input-symbol {
@@ -87,15 +88,14 @@ label {
 
 #amount + .input-symbol {
   left: 1px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
+  border-radius: 3px 0 0 3px;
+
 }
 
 #term + .input-symbol,
 #interest + .input-symbol {
   right: 1px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-radius: 0 3px 3px 0;
 }
 
 #amount {
@@ -108,21 +108,20 @@ label {
 }
 
 .term-interest-container {
-  display: flex;
-  justify-content: space-between;
   margin-bottom: 10px;
 }
 
 .term-container, .interest-container {
-  flex: 1;
+  width: 100%;
 }
 
 .term-container {
-  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .radio-container {
   margin-bottom: 20px;
+  position: relative;
 }
 
 .radio-item {
@@ -355,52 +354,22 @@ button img {
 
 /* Error state styles */
 .input-container.error input {
-  width: 100%;
-  padding: 10px;
   border-color: red;
-  border-radius: 4px;
-  box-sizing: border-box;
 }
 
 .input-container.error .input-symbol {
-  background-color: red; /* Light red background for symbols */
-  position: absolute;
-  top: 1px;
-  bottom: 1px;
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
+  background-color: red;
   color: white;
 }
 
-.input-container.error #amount + .input-symbol {
-  left: 1px;
-  border-top-left-radius: 3px;
-  border-bottom-left-radius: 3px;
-}
-
-.input-container.error #term + .input-symbol,
-.input-container.error #interest + .input-symbol {
-  right: 1px;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
-#amount {
-  padding-left: 30px;
-}
-
-#term,
-#interest {
-  padding-right: 50px;
-}
-
-
 .error-message {
-  color: red;
-  font-size: 10px;
-  margin-top: 2px;
   display: none;
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  position: absolute;
+  left: 0;
+  bottom: -20px; /* Position below the input */
 }
 
 .input-container.error .error-message,
@@ -416,6 +385,23 @@ button img {
   margin-top: 5px; /* Add some space above the error message */
 }
 
+.radio-container.error {
+  margin-bottom: 40px; /* Increase when there's an error to make room for the message */
+}
+
+.radio-container .error-message {
+  display: none;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+  bottom: -20px; /* Position below the radio buttons */
+}
+
+.radio-container.error .error-message {
+  display: block;
+}
+
 @media (max-width: 767px) {
   .term-interest-container {
     flex-direction: column;
@@ -428,5 +414,20 @@ button img {
   .term-container {
     margin-right: 0;
     margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .term-interest-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .term-container, .interest-container {
+    width: 48%; /* Adjust this value as needed */
+  }
+
+  .term-container {
+    margin-right: 4%; /* Adjust this value as needed */
   }
 }
