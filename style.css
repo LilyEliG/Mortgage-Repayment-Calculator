@@ -63,7 +63,7 @@ label {
 
 .input-container {
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .input-container input {
@@ -108,7 +108,8 @@ label {
 }
 
 .term-interest-container {
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 .term-container, .interest-container {
@@ -182,6 +183,7 @@ label {
 }
 
 button {
+  margin-top: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -353,6 +355,10 @@ button img {
 }
 
 /* Error state styles */
+.input-container.error {
+  margin-bottom: 40px; /* Increase from 30px to 40px */
+}
+
 .input-container.error input {
   border-color: red;
 }
@@ -365,11 +371,11 @@ button img {
 .error-message {
   display: none;
   color: red;
-  font-size: 12px;
-  margin-top: 4px;
+  font-size: 10px;
+  margin-top: 2px;
   position: absolute;
   left: 0;
-  bottom: -20px; /* Position below the input */
+  bottom: -15px; /* Position below the input */
 }
 
 .input-container.error .error-message,
@@ -392,10 +398,10 @@ button img {
 .radio-container .error-message {
   display: none;
   color: red;
-  font-size: 12px;
+  font-size: 10px;
   position: absolute;
   left: 0;
-  bottom: -20px; /* Position below the radio buttons */
+  bottom: -15px; /* Position below the radio buttons */
 }
 
 .radio-container.error .error-message {
