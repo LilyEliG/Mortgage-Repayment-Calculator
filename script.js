@@ -25,6 +25,18 @@ function checkForErrors() {
     return hasError;
 }
 
+// Function to update radio item styles
+function updateRadioItemStyles() {
+    document.querySelectorAll('.radio-item').forEach(item => {
+        const radio = item.querySelector('input[type="radio"]');
+        if (radio.checked) {
+            item.classList.add('selected');
+        } else {
+            item.classList.remove('selected');
+        }
+    });
+}
+
 // Event listener for calculate button
 document.getElementById('calculate').addEventListener('click', function(e) {
     e.preventDefault();
@@ -40,10 +52,11 @@ document.querySelectorAll('input').forEach(function(input) {
     });
 });
 
-// Remove error state on radio button selection
+// Remove error state on radio button selection and update styles
 document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
     radio.addEventListener('change', function() {
         document.querySelector('.radio-container').classList.remove('error');
+        updateRadioItemStyles();
     });
 });
 
@@ -92,6 +105,9 @@ function calculateRepayments() {
         </div>
     `;
     resultsContainer.classList.add('calculated');
+
+    // Add more space above the button
+    document.getElementById('calculate').style.marginTop = '20px';
 }
 
 function clearAll() {
@@ -103,9 +119,10 @@ function clearAll() {
     // Uncheck all radio buttons
     document.querySelectorAll('input[type="radio"]').forEach(radio => {
         radio.checked = false;
-        radio.parentElement.style.borderColor = '#ccc';
-        radio.parentElement.style.backgroundColor = 'white';
     });
+
+    // Update radio item styles
+    updateRadioItemStyles();
 
     // Reset results
     const resultsContainer = document.getElementById('results');
@@ -118,6 +135,9 @@ function clearAll() {
 
     // Remove all error states
     document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+    // Reset button margin
+    document.getElementById('calculate').style.marginTop = '';
 }
 
 document.getElementById('clear-all').addEventListener('click', clearAll);
@@ -129,3 +149,6 @@ document.querySelectorAll('input[type="text"]').forEach(input => {
         this.value = formatNumber(this.value.replace(/,/g, ''));
     });
 });
+
+// Call updateRadioItemStyles on page load
+document.addEventListener('DOMContentLoaded', updateRadioItemStyles);
